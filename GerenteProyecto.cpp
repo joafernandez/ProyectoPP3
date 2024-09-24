@@ -3,7 +3,6 @@
 //
 
 #include "GerenteProyecto.h"
-#include "Empleado.h"
 #include <iostream>
 
 // implemento constructor

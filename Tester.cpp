@@ -17,10 +17,7 @@ void Tester::setEspecialidadPruebas(const string &especialidadPruebas) {
     this->especialidadPruebas = especialidadPruebas;
 }
 
-// METODOS
-void Tester::asignarTarea() {
-    cout << "El tester " << getNombre() << " ha sido asignado a una tarea de pruebas de " << especialidadPruebas << "." << endl;
-}
+//metodos
 
 void Tester::realizarPruebas() {
     cout << "El tester " << getNombre() << " está realizando pruebas de " << especialidadPruebas << "." << endl;

@@ -35,4 +35,3 @@ public:                                             //declaro el contructor
     bool operator<(const Empleado &otroEmpleado) const;
     bool operator>(const Empleado &otroEmpleado) const;
 };
-

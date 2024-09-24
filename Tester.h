@@ -26,7 +26,7 @@ public:
     void setEspecialidadPruebas(const string &especialidadPruebas);
 
     // Métodos específicos del tester
-    void asignarTarea() override;  // Sobrescribo el método de Empleado
+
     void realizarPruebas();
     void reportarErrores();
 };
