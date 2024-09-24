@@ -3,4 +3,4 @@ project(GestorProyectos)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(GestorProyectos main.cpp Empleado.cpp Empleado.h GerenteProyecto.cpp GerenteProyecto.h Tester.cpp Tester.h Desarrollador.cpp Desarrollador.h Proyecto.cpp Proyecto.h)
+add_executable(GestorProyectos main.cpp Empleado.cpp Empleado.h GerenteProyecto.cpp GerenteProyecto.h Tester.cpp Tester.h Desarrollador.cpp Desarrollador.h Proyecto.cpp Proyecto.h Tarea.cpp Tarea.h Cliente.cpp Cliente.h ReunionSeguimiento.cpp ReunionSeguimiento.h "Reporte .cpp" "Reporte .h")

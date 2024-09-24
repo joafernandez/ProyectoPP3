@@ -5,7 +5,7 @@
 #ifndef GESTORPROYECTOS_EMPLEADO_H
 #define GESTORPROYECTOS_EMPLEADO_H
 
-#endif //GESTORPROYECTOS_EMPLEADO_H
+
 #include "string"
 #include "iostream"
 using namespace std;
@@ -35,3 +35,4 @@ public:                                             //declaro el contructor
     bool operator<(const Empleado &otroEmpleado) const;
     bool operator>(const Empleado &otroEmpleado) const;
 };
+#endif //GESTORPROYECTOS_EMPLEADO_H
