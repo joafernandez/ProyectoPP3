@@ -41,9 +41,13 @@ void Empleado::asignarProyecto() {
 
 
 void Empleado::finalizarTarea() {                                 //falta
-    // Lógica de finalización de tarea (vacío por ahora)
+    if (numProyectos > 0) {
+        cout << "El empleado " << getNombre() << " ha finalizado una tarea." << endl;
+        numProyectos--;  // disminuye num proyect
+    } else {
+        cout << "No hay tareas pendientes para el empleado " << getNombre() << "." << endl;
+    }
 }
-
 
 bool Empleado::operator<(const Empleado &otroEmpleado) const {
     return this->numProyectos < otroEmpleado.numProyectos;
