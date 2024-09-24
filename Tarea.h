@@ -34,6 +34,8 @@ public:
 
     // Métodos para actualizar estado de la tarea
     void actualizarEstado(const string &nuevoEstado);
+
+
 };
 
 #endif // GESTORPROYECTOS_TAREA_H

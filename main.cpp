@@ -9,7 +9,7 @@
 #include "Proyecto.h"
 #include "Cliente.h"
 #include "ReunionSeguimiento.h"
-#include "Reporte.h"
+#include "Reporte .h"
 
 int main() {
     // Crear empleados

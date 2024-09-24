@@ -25,5 +25,7 @@ public:
     //metodos:
     void gestionarProyecto();
     void asignarTareas();
+
+
 };
 

@@ -38,6 +38,10 @@ public:
 
 
     void generarReporte() const;
+
+
+
+
 };
 
 
