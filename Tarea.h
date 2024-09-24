@@ -35,6 +35,9 @@ public:
     // Métodos para actualizar estado de la tarea
     void actualizarEstado(const string &nuevoEstado);
 
+    // Declarar a GerenteProyecto como friend!!!!!!!!
+    friend class GerenteProyecto;
+
 
 };
 

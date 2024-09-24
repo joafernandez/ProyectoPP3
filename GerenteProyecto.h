@@ -8,7 +8,12 @@
 #endif //GESTORPROYECTOS_GERENTEPROYECTO_H
 #include "Empleado.h"
 #include "string"
+//agregue utlimo
+#include "Proyecto.h"
+#include "Tarea.h"
 using namespace std;
+
+
 
 class GerenteProyecto:public Empleado {
 private:
@@ -23,9 +28,13 @@ public:
     void setEquipoGestionado(const string & equipoGest);
 
     //metodos:
-    void gestionarProyecto();
+    // antes void gestionarProyecto();
+
+    void gestionarProyecto(Proyecto &proyecto);//agregue
     void asignarTareas();
 
+    //agregue esto ultimo
 
+    void actualizarEstadoTarea(Tarea &tarea, const string &nuevoEstado);  // Declaración de actualizarEstadoTarea
 };
 

@@ -5,12 +5,13 @@
 #ifndef GESTORPROYECTOS_PROYECTO_H
 #define GESTORPROYECTOS_PROYECTO_H
 
-#endif //GESTORPROYECTOS_PROYECTO_H
 
 #include <string>
 #include <vector>
 #include "Empleado.h"
 #include "Tarea.h"   // falta hacer esta clase
+using namespace std;
+
 
 class Proyecto{
 private:
@@ -39,11 +40,14 @@ public:
 
     void generarReporte() const;
 
+    // Declarar a GerenteProyecto como friend!!!!!!!!!!!!1
+    friend class GerenteProyecto;
 
 
 
 };
 
 
+#endif //GESTORPROYECTOS_PROYECTO_H
 
 
