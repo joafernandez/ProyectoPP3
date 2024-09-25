@@ -15,7 +15,7 @@
 
 class Desarrollador : public Empleado {
 private:
-    string lenguajeDominado;  // Lenguaje de programación en el que se especializa el desarrollador
+    string lenguajeDominado;                    // Lenguaje de programación en el que se especializa el desarrollador
 
 public:
     // Constructor

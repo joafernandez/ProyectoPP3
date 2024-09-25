@@ -49,3 +49,5 @@ void Proyecto::generarReporte() const {
     cout << "Numero de empleados asignados: " << empleadosAsignados.size() << endl;
     cout << "Numero de tareas: " << tareas.size() << endl;
 }
+
+// NICOLAS PROBANDO
