@@ -1,7 +1,5 @@
 
 
-#include <iostream>
-#include "Empleado.h"
 #include "Desarrollador.h"
 #include "Tester.h"
 #include "GerenteProyecto.h"
@@ -23,7 +21,7 @@ int main() {
     gerente1.asignarProyecto();
 
     // Crear un proyecto
-    Proyecto proyecto1("Proyecto Software", "Desarrollo de una aplicación web", "01/09/2024", "01/12/2024");
+    Proyecto proyecto1("Proyecto Software", "Desarrollo de una aplicacion web", "01/09/2024", "01/12/2024");
 
     // Agregar empleados al proyecto
     proyecto1.agregarEmpleado(&dev1);
@@ -31,7 +29,7 @@ int main() {
     proyecto1.agregarEmpleado(&gerente1);
 
     // Crear tareas y asignarlas
-    Tarea tarea1("Desarrollar el módulo de autenticación", "Pendiente", "15/10/2024", &dev1);
+    Tarea tarea1("Desarrollar el modulo de autenticacion", "Pendiente", "15/10/2024", &dev1);
     Tarea tarea2("Realizar pruebas de carga", "Pendiente", "20/10/2024", &tester1);
 
     proyecto1.agregarTarea(&tarea1);
@@ -58,7 +56,7 @@ int main() {
 
     // Crear un reporte de progreso
     Reporte reporte1("Avance del 60% completado");
-    reporte1.agregarTareaCompletada("Desarrollar el módulo de autenticación");
+    reporte1.agregarTareaCompletada("Desarrollar el modulo de autenticacion");
     reporte1.agregarResumenReunion(reunion1);
 
     // Generar reporte final del proyecto
