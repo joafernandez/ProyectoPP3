@@ -10,9 +10,6 @@
 #include "Empleado.h"
 #include <string>
 
-
-
-
 class Desarrollador : public Empleado {
 private:
     string lenguajeDominado;                    // Lenguaje de programación en el que se especializa el desarrollador

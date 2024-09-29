@@ -14,7 +14,7 @@ class Empleado {
 private:
     string nombre;
     string puesto;
-    int numProyectos;
+    int numProyectos;//cantidad de proyectos.contador
 public:                                             //declaro el contructor
     Empleado(const string &nom, const string &pues);
 
@@ -33,6 +33,6 @@ public:                                             //declaro el contructor
 
     // para comparar empleados
     bool operator<(const Empleado &otroEmpleado) const;
-    bool operator>(const Empleado &otroEmpleado) const;
+    bool operator>(const Empleado &otroEmpleado) const;// se repite podria quitar
 };
 #endif //GESTORPROYECTOS_EMPLEADO_H

@@ -36,5 +36,8 @@ public:
     //agregue esto ultimo
 
     void actualizarEstadoTarea(Tarea &tarea, const string &nuevoEstado);  // Declaración de actualizarEstadoTarea
+
+    //HAGO USO DE FRIEND EN PROYECTO:
+
 };
 

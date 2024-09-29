@@ -38,7 +38,7 @@ public:
     void eliminarTarea(Tarea *tarea);
 
 
-    void generarReporte() const;
+    void generarReporte() const;//MUESTRA INFO DE LA CLASE
 
     // Declarar a GerenteProyecto como friend!!!!!!!!!!!!1
     friend class GerenteProyecto;
