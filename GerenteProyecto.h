@@ -17,7 +17,7 @@ using namespace std;
 
 class GerenteProyecto:public Empleado {
 private:
-    string equipoGestionado;
+    string equipoGestionado;// el equipo q hace el proyecto
 public:
    //CONSTR
     GerenteProyecto(const string &nom, const string &puesto, const string &equipoGest);
@@ -30,7 +30,7 @@ public:
     //metodos:
     // antes void gestionarProyecto();
 
-    void gestionarProyecto(Proyecto &proyecto);//agregue
+    void gestionarProyecto(Proyecto &proyecto);//imprime nombre proyecto,lista empleado y estado tarea
     void asignarTareas();
 
     //agregue esto ultimo
@@ -38,6 +38,8 @@ public:
     void actualizarEstadoTarea(Tarea &tarea, const string &nuevoEstado);  // Declaración de actualizarEstadoTarea
 
     //HAGO USO DE FRIEND EN PROYECTO:
+
+    void listarTareasProyecto(Proyecto &proyecto);  // Método que accede a los atributos privados de `Proyecto`
 
 };
 

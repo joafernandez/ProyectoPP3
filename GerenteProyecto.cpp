@@ -41,9 +41,19 @@ void GerenteProyecto::actualizarEstadoTarea(Tarea &tarea, const string &nuevoEst
 }
 
 void GerenteProyecto::asignarTareas() {
-    cout << "El gerente " << getNombre() << " está asignando tareas a su equipo." << endl;
+  cout << "El gerente " << getNombre() << " está asignando tareas a su equipo." << endl;
 }
 
+
+// FRIENS:
+
+void GerenteProyecto::listarTareasProyecto(Proyecto &proyecto) {
+    // Acceder directamente al atributo privado `tareas` de `Proyecto` gracias a `friend`
+    cout << "Tareas del proyecto " << proyecto.nombre << ":" << endl;
+    for (Tarea *tarea: proyecto.tareas) {  // Accediendo directamente a 'tareas' (privado)
+        cout << "- " << tarea->getNombre() << " - Estado: " << tarea->getEstado() << endl;
+    }
+}
 
 
 
