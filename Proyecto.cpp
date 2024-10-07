@@ -49,6 +49,24 @@ void Proyecto::generarReporte() const {
     cout << "Numero de empleados asignados: " << empleadosAsignados.size() << endl;
     cout << "Numero de tareas: " << tareas.size() << endl;
 }
+// Métodos para iteradores personalizados
+vector<Empleado*>::const_iterator Proyecto::beginEmpleados() const {
+    return empleadosAsignados.begin();
+}
+
+vector<Empleado*>::const_iterator Proyecto::endEmpleados() const {
+    return empleadosAsignados.end();
+}
+
+vector<Tarea*>::const_iterator Proyecto::beginTareas() const {
+    return tareas.begin();
+}
+
+vector<Tarea*>::const_iterator Proyecto::endTareas() const {
+    return tareas.end();
+}
+
+
 // Sobrecarga de operadores para comparar fechas de finalización de proyectos
 bool Proyecto::operator<(const Proyecto &otro) const {
     return this->fechaFin < otro.fechaFin;

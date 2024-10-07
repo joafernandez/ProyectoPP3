@@ -59,6 +59,42 @@ int main() {
             cout << "=== Información Precargada ===" << endl;
 
             cout << "Proyectos:" << endl;
+            for (const auto &proyecto : proyectos) {
+                cout << "Proyecto: " << proyecto.getNombre() << endl;
+
+                // Mostrar empleados del proyecto usando iteradores
+                cout << "Empleados asignados:" << endl;
+                for (auto it = proyecto.beginEmpleados(); it != proyecto.endEmpleados(); ++it) {
+                    cout << "Empleado: " << (*it)->getNombre() << ", Puesto: " << (*it)->getPuesto() << endl;
+                }
+
+                // Mostrar tareas del proyecto usando iteradores
+                cout << "Tareas del proyecto:" << endl;
+                for (auto it = proyecto.beginTareas(); it != proyecto.endTareas(); ++it) {
+                    cout << "Tarea: " << (*it)->getNombre() << ", Estado: " << (*it)->getEstado()
+                         << ", Fecha Límite: " << (*it)->getFechaLimite() << endl;
+                }
+
+                cout << "-----------------------------" << endl;
+            }
+
+            cout << "Empleados:" << endl;
+            for (const auto &empleado : empleados) {
+                cout << "Nombre: " << empleado->getNombre() << ", Puesto: " << empleado->getPuesto() << endl;
+            }
+
+            cout << "Clientes:" << endl;
+            for (const auto &cliente : clientes) {
+                cout << "Cliente: " << cliente.getNombre() << ", Empresa: " << cliente.getEmpresa() << endl;
+            }
+            cout << "=================================" << endl;
+
+
+/*
+        if (opcion == 1) {
+            cout << "=== Información Precargada ===" << endl;
+
+            cout << "Proyectos:" << endl;
             for (const auto &proyecto: proyectos) {
                 proyecto.generarReporte();
                 cout << "-----------------------------" << endl;
@@ -74,7 +110,7 @@ int main() {
                 cout << "Cliente: " << cliente.getNombre() << ", Empresa: " << cliente.getEmpresa() << endl;
             }
             cout << "=================================" << endl;
-
+*/
         } else if (opcion == 2) {
             int opcionProyecto;
             do {

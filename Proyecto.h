@@ -37,6 +37,14 @@ public:
     void agregarTarea(Tarea *tarea);
     void eliminarTarea(Tarea *tarea);
 
+    // Métodos para iteradores personalizados
+    // Métodos para iteradores personalizados
+    vector<Empleado*>::const_iterator beginEmpleados() const;
+    vector<Empleado*>::const_iterator endEmpleados() const;
+    vector<Tarea*>::const_iterator beginTareas() const;
+    vector<Tarea*>::const_iterator endTareas() const;
+
+
 
     void generarReporte() const;//MUESTRA INFO DE LA CLASE
     //AGREGUE CORRECCION
@@ -44,13 +52,6 @@ public:
     bool operator>(const Proyecto &otro) const;
     bool operator<=(const Proyecto &otro) const;
     bool operator>=(const Proyecto &otro) const;
-
-
-
-
-
-
-
 
 
 
