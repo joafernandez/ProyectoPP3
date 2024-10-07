@@ -44,3 +44,19 @@ void Tarea::actualizarEstado(const string &nuevoEstado) {
     this->estado = nuevoEstado;
     cout << "El estado de la tarea '" << nombre << "' ha sido actualizado a " << estado << "." << endl;
 }
+// Sobrecarga de operadores para comparar fechas límite de tareas
+bool Tarea::operator<(const Tarea &otra) const {
+    return this->fechaLimite < otra.fechaLimite;
+}
+
+bool Tarea::operator>(const Tarea &otra) const {
+    return this->fechaLimite > otra.fechaLimite;
+}
+
+bool Tarea::operator<=(const Tarea &otra) const {
+    return this->fechaLimite <= otra.fechaLimite;
+}
+
+bool Tarea::operator>=(const Tarea &otra) const {
+    return this->fechaLimite >= otra.fechaLimite;
+}

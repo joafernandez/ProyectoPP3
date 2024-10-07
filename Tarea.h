@@ -35,6 +35,14 @@ public:
     // Métodos para actualizar estado de la tarea
     void actualizarEstado(const string &nuevoEstado);
 
+
+    //AGREGUE CORRECCION
+    bool operator<(const Tarea &otra) const;
+    bool operator>(const Tarea &otra) const;
+    bool operator<=(const Tarea &otra) const;
+    bool operator>=(const Tarea &otra) const;
+
+
     // gerente puede actualizar tarea:
     friend class GerenteProyecto;
 

@@ -9,6 +9,7 @@
 #include "Cliente.h"
 #include "ReunionSeguimiento.h"
 #include "Reporte .h"
+#include <algorithm>"
 
 using namespace std;
 
@@ -28,11 +29,11 @@ int main() {
     };
 
     vector<Proyecto> proyectos = {
-            Proyecto("Proyecto 1", "Descripción del proyecto 1", "01/09/2024", "01/12/2024"),
-            Proyecto("Proyecto 2", "Descripción del proyecto 2", "01/09/2024", "01/12/2024"),
-            Proyecto("Proyecto 3", "Descripción del proyecto 3", "01/09/2024", "01/12/2024"),
-            Proyecto("Proyecto 4", "Descripción del proyecto 4", "01/09/2024", "01/12/2024"),
-            Proyecto("Proyecto 5", "Descripción del proyecto 5", "01/09/2024", "01/12/2024")
+            Proyecto("Proyecto 1", "Descripción del proyecto 1", "01/09/2024", "03/12/2024"),
+            Proyecto("Proyecto 2", "Descripción del proyecto 2", "03/09/2024", "01/12/2024"),
+            Proyecto("Proyecto 3", "Descripción del proyecto 3", "07/09/2024", "06/12/2024"),
+            Proyecto("Proyecto 4", "Descripción del proyecto 4", "08/09/2024", "02/12/2024"),
+            Proyecto("Proyecto 5", "Descripción del proyecto 5", "02/09/2024", "04/12/2024")
     };
 
     vector<Cliente> clientes = {
@@ -82,17 +83,20 @@ int main() {
                 cout << "2. Agregar Proyecto" << endl;
                 cout << "3. Asignar Empleados a Proyecto" << endl;
                 cout << "4. Eliminar Proyecto" << endl;
+                cout << "5. Ordenar proyectos por fecha de finalización" << endl; // Nueva opción
                 cout << "0. Volver" << endl;
-                cout << "Ingrese su opcion: "; // Asegúrate de que este mensaje esté aquí
+                cout << "Ingrese su opcion: ";
                 cin >> opcionProyecto;
                 cin.ignore(); // Limpiar el buffer de entrada
 
                 if (opcionProyecto == 1) {
-                    for (const auto &proyecto: proyectos) {
+                    // Mostrar todos los proyectos
+                    for (const auto &proyecto : proyectos) {
                         proyecto.generarReporte();
                         cout << "-----------------------------" << endl;
                     }
                 } else if (opcionProyecto == 2) {
+                    // Agregar nuevo proyecto
                     string nombre, descripcion, fechaInicio, fechaFin;
                     cout << "Ingrese nombre del proyecto: ";
                     cin.ignore(); // Limpiar el buffer antes de leer cadenas
@@ -107,52 +111,117 @@ int main() {
                     proyectos.push_back(nuevoProyecto);
                     cout << "Proyecto agregado." << endl;
                 } else if (opcionProyecto == 3) {
+                    // Asignar empleados a un proyecto
                     int indexProyecto;
                     cout << "Ingrese el índice del proyecto: ";
                     cin >> indexProyecto;
-
-                    // Verificar si el índice del proyecto es válido
-                    if (indexProyecto >= 0 && indexProyecto < proyectos.size()) {
-                        cout << "Asignando empleados al proyecto..." << endl;
-
-                        // Mostrar lista de empleados disponibles
-                        for (int i = 0; i < empleados.size(); i++) {
-                            cout << i << ". " << empleados[i]->getNombre() << " - " << empleados[i]->getPuesto()
-                                 << endl;
-                        }
-
-                        int indexEmpleado;
-                        cout << "Seleccione el índice del empleado a asignar: ";
-                        cin >> indexEmpleado;
-
-                        // Verificar si el índice del empleado es válido
-                        if (indexEmpleado >= 0 && indexEmpleado < empleados.size()) {
-                            proyectos[indexProyecto].agregarEmpleado(empleados[indexEmpleado]);
-                            cout << "Empleado asignado al proyecto." << endl;
-                        } else {
-                            cout << "Índice de empleado inválido." << endl;
-                        }
-                    } else {
-                        cout << "Índice de proyecto inválido." << endl;
-                    }
+                    // Verificar y asignar empleados...
                 } else if (opcionProyecto == 4) {
+                    // Eliminar proyecto
                     int index;
                     cout << "Ingrese el índice del proyecto a eliminar: ";
                     cin >> index;
-
-                    // Verificar si el índice del proyecto es válido
                     if (index >= 0 && index < proyectos.size()) {
                         proyectos.erase(proyectos.begin() + index);
                         cout << "Proyecto eliminado." << endl;
                     } else {
                         cout << "Índice de proyecto inválido." << endl;
                     }
+                } else if (opcionProyecto == 5) {
+                    // Nueva opción: Ordenar proyectos por fecha de finalización
+                    sort(proyectos.begin(), proyectos.end()); // Usa la sobrecarga del operador <
+                    cout << "Proyectos ordenados por fecha de finalización:" << endl;
+                    for (const auto &proyecto : proyectos) {
+                        proyecto.generarReporte();
+                        cout << "-----------------------------" << endl;
+                    }
                 } else if (opcionProyecto != 0) {
                     cout << "Opción no válida." << endl;
                 }
             } while (opcionProyecto != 0); // Mantiene el bucle hasta que el usuario ingrese 0 para salir
+        }
 
-        } else if (opcion == 3) {
+
+            /*else if (opcion == 2) {
+                int opcionProyecto;
+                do {
+                    cout << "=== Gestion de Proyectos ===" << endl;
+                    cout << "1. Mostrar todos los proyectos" << endl;
+                    cout << "2. Agregar Proyecto" << endl;
+                    cout << "3. Asignar Empleados a Proyecto" << endl;
+                    cout << "4. Eliminar Proyecto" << endl;
+                    cout << "0. Volver" << endl;
+                    cout << "Ingrese su opcion: "; // Asegúrate de que este mensaje esté aquí
+                    cin >> opcionProyecto;
+                    cin.ignore(); // Limpiar el buffer de entrada
+
+                    if (opcionProyecto == 1) {
+                        for (const auto &proyecto: proyectos) {
+                            proyecto.generarReporte();
+                            cout << "-----------------------------" << endl;
+                        }
+                    } else if (opcionProyecto == 2) {
+                        string nombre, descripcion, fechaInicio, fechaFin;
+                        cout << "Ingrese nombre del proyecto: ";
+                        cin.ignore(); // Limpiar el buffer antes de leer cadenas
+                        getline(cin, nombre);
+                        cout << "Ingrese descripción: ";
+                        getline(cin, descripcion);
+                        cout << "Ingrese fecha de inicio: ";
+                        getline(cin, fechaInicio);
+                        cout << "Ingrese fecha de fin: ";
+                        getline(cin, fechaFin);
+                        Proyecto nuevoProyecto(nombre, descripcion, fechaInicio, fechaFin);
+                        proyectos.push_back(nuevoProyecto);
+                        cout << "Proyecto agregado." << endl;
+                    } else if (opcionProyecto == 3) {
+                        int indexProyecto;
+                        cout << "Ingrese el índice del proyecto: ";
+                        cin >> indexProyecto;
+
+                        // Verificar si el índice del proyecto es válido
+                        if (indexProyecto >= 0 && indexProyecto < proyectos.size()) {
+                            cout << "Asignando empleados al proyecto..." << endl;
+
+                            // Mostrar lista de empleados disponibles
+                            for (int i = 0; i < empleados.size(); i++) {
+                                cout << i << ". " << empleados[i]->getNombre() << " - " << empleados[i]->getPuesto()
+                                     << endl;
+                            }
+
+                            int indexEmpleado;
+                            cout << "Seleccione el índice del empleado a asignar: ";
+                            cin >> indexEmpleado;
+
+                            // Verificar si el índice del empleado es válido
+                            if (indexEmpleado >= 0 && indexEmpleado < empleados.size()) {
+                                proyectos[indexProyecto].agregarEmpleado(empleados[indexEmpleado]);
+                                cout << "Empleado asignado al proyecto." << endl;
+                            } else {
+                                cout << "Índice de empleado inválido." << endl;
+                            }
+                        } else {
+                            cout << "Índice de proyecto inválido." << endl;
+                        }
+                    } else if (opcionProyecto == 4) {
+                        int index;
+                        cout << "Ingrese el índice del proyecto a eliminar: ";
+                        cin >> index;
+
+                        // Verificar si el índice del proyecto es válido
+                        if (index >= 0 && index < proyectos.size()) {
+                            proyectos.erase(proyectos.begin() + index);
+                            cout << "Proyecto eliminado." << endl;
+                        } else {
+                            cout << "Índice de proyecto inválido." << endl;
+                        }
+                    } else if (opcionProyecto != 0) {
+                        cout << "Opción no válida." << endl;
+                    }
+                } while (opcionProyecto != 0); // Mantiene el bucle hasta que el usuario ingrese 0 para salir
+
+            }ESTA FUNCIONABA BIEN CUANDO IMRIMI*/
+            else if (opcion == 3) {
             int opcionEmpleado;
             do {
                 cout << "                                === GESTION DE EMPLEADOS ===" << endl;
@@ -209,14 +278,15 @@ int main() {
                     cout << "Opción no válida." << endl;
                 }
             } while (opcionEmpleado != 0); // Mantiene el bucle hasta que el usuario ingrese 0 para salir
-        } else if (opcion == 4) {
+        }
+            else if (opcion == 4) {
             int opcionTarea;
             do {
                 cout << "=== Gestion de Tareas ===" << endl;
                 cout
-                        << "1) Mostrar todas las tareas\t2) Agregar Tarea\t3) Asignar Empleado a Tarea\t4) Eliminar Tarea\t0) Volver al Menú Principal"
+                        << "1) Mostrar todas las tareas\t2) Agregar Tarea\t3) Asignar Empleado a Tarea\t4) Eliminar Tarea\t 5) Ordenar por Fecha Limite0) Volver al Menú Principal"
                         << endl;
-                cout << "Ingrese su opción: ";
+                cout << "Ingrese su opcion: ";
                 cin >> opcionTarea;
                 cin.ignore(); // Limpiar el buffer de entrada
 
@@ -226,9 +296,9 @@ int main() {
                         cout << "No hay tareas cargadas." << endl;
                     } else {
                         for (int i = 0; i < tareas.size(); ++i) {
-                            cout << "Índice: " << i << " - Tarea: " << tareas[i].getNombre()
+                            cout << "Indice: " << i << " - Tarea: " << tareas[i].getNombre()
                                  << ", Estado: " << tareas[i].getEstado()
-                                 << ", Fecha Límite: " << tareas[i].getFechaLimite() << endl;
+                                 << ", Fecha Limite: " << tareas[i].getFechaLimite() << endl;
 
                             if (tareas[i].getEmpleadoAsignado() != nullptr) {
                                 cout << "Empleado Asignado: " << tareas[i].getEmpleadoAsignado()->getNombre()
@@ -298,12 +368,32 @@ int main() {
                             cout << "Índice inválido." << endl;
                         }
                     }
-                } else if (opcionTarea != 0) {
+                }//ACA PRUEBO OPCION 5
+            else if (opcionTarea == 5) {
+                // Ordenar tareas por fecha límite
+                if (tareas.empty()) {
+                    cout << "No hay tareas para ordenar." << endl;
+                } else {
+                    sort(tareas.begin(), tareas.end()); // Esto ahora usa la sobrecarga del operador <
+                    cout << "Tareas ordenadas por fecha límite:" << endl;
+                    for (const auto& tarea : tareas) {
+                        cout << "Tarea: " << tarea.getNombre()
+                             << ", Fecha Límite: " << tarea.getFechaLimite()
+                             << ", Estado: " << tarea.getEstado() << endl;
+                    }
+                }
+            }
+            else if (opcionTarea != 0) {
                     cout << "Opción no válida." << endl;
                 }
             } while (opcionTarea != 0); // Mantiene el bucle hasta que el usuario ingrese 0 para salir
 
-        } else if (opcion == 5) {
+        } //esta funcionaba bien cuando imprimi
+
+
+
+
+        else if (opcion == 5) {
             int opcionCliente;
             do {
                 cout << "                           === Gestion de Clientes ===" << endl;

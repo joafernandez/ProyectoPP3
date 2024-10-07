@@ -49,3 +49,19 @@ void Proyecto::generarReporte() const {
     cout << "Numero de empleados asignados: " << empleadosAsignados.size() << endl;
     cout << "Numero de tareas: " << tareas.size() << endl;
 }
+// Sobrecarga de operadores para comparar fechas de finalización de proyectos
+bool Proyecto::operator<(const Proyecto &otro) const {
+    return this->fechaFin < otro.fechaFin;
+}
+
+bool Proyecto::operator>(const Proyecto &otro) const {
+    return this->fechaFin > otro.fechaFin;
+}
+
+bool Proyecto::operator<=(const Proyecto &otro) const {
+    return this->fechaFin <= otro.fechaFin;
+}
+
+bool Proyecto::operator>=(const Proyecto &otro) const {
+    return this->fechaFin >= otro.fechaFin;
+}

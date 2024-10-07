@@ -39,6 +39,20 @@ public:
 
 
     void generarReporte() const;//MUESTRA INFO DE LA CLASE
+    //AGREGUE CORRECCION
+    bool operator<(const Proyecto &otro) const;
+    bool operator>(const Proyecto &otro) const;
+    bool operator<=(const Proyecto &otro) const;
+    bool operator>=(const Proyecto &otro) const;
+
+
+
+
+
+
+
+
+
 
     // Declarar a GerenteProyecto como friend!!!!!!!!!!!!1
     friend class GerenteProyecto;
