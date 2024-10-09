@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 #include "Empleado.h"
-#include "Tarea.h"   // falta hacer esta clase
+#include "Tarea.h"
 using namespace std;
 
 
@@ -37,8 +37,9 @@ public:
     void agregarTarea(Tarea *tarea);
     void eliminarTarea(Tarea *tarea);
 
+
     // Métodos para iteradores personalizados
-    // Métodos para iteradores personalizados
+    // para recorrer y mostrar
     vector<Empleado*>::const_iterator beginEmpleados() const;
     vector<Empleado*>::const_iterator endEmpleados() const;
     vector<Tarea*>::const_iterator beginTareas() const;
@@ -47,16 +48,16 @@ public:
 
 
     void generarReporte() const;//MUESTRA INFO DE LA CLASE
-    //AGREGUE CORRECCION
+
+ // podemos controlar los proyectos por fecha de inicio y finalizacion
     bool operator<(const Proyecto &otro) const;
     bool operator>(const Proyecto &otro) const;
     bool operator<=(const Proyecto &otro) const;
     bool operator>=(const Proyecto &otro) const;
 
 
-
-    // Declarar a GerenteProyecto como friend!!!!!!!!!!!!1
-    friend class GerenteProyecto;
+    // Declaramos un amigo
+    friend class GerenteProyecto;// podra acceder a la lista de tareas y empleados si es necesario
 
 
 
