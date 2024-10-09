@@ -23,9 +23,6 @@ public:                                             //declaro el contructor
     int getNumProyectos() const;
 
 
-    void setNombre(const string &nombre);
-    void setPuesto(const string &puesto);
-    void setNumProyectos(int numProyectos);
 
 
     void asignarProyecto();

@@ -10,10 +10,10 @@
 #include "Empleado.h"
 
 using namespace std;
-
+// representa las acttividades dentro del proyecto
 class Tarea {
 private:
-    string nombre;
+    string nombre;// de la tarea
     string estado;  // pendiente, en progreso, finalizada
     string fechaLimite;
     Empleado* empleadoAsignado;
@@ -27,16 +27,16 @@ public:
     string getFechaLimite() const;
     Empleado* getEmpleadoAsignado() const;
 
-    void setNombre(const string &nombre);
+
     void setEstado(const string &estado);
-    void setFechaLimite(const string &fechaLimite);
     void setEmpleadoAsignado(Empleado *empleado);
 
     // Métodos para actualizar estado de la tarea
-    void actualizarEstado(const string &nuevoEstado);
+
+    void actualizarEstado(const string &nuevoEstado);// no la usamos x momento
 
 
-    //AGREGUE CORRECCION
+    //ordenamos por fecha las tareas
     bool operator<(const Tarea &otra) const;
     bool operator>(const Tarea &otra) const;
     bool operator<=(const Tarea &otra) const;
@@ -44,7 +44,7 @@ public:
 
 
     // gerente puede actualizar tarea:
-    friend class GerenteProyecto;
+    friend class GerenteProyecto;// para q pueda acceder a las listas
 
 
 };

@@ -21,18 +21,6 @@ int Empleado::getNumProyectos() const {
     return numProyectos;
 }
 
-                                                  //  setters
-void Empleado::setNombre(const string &nombre) {
-    this->nombre = nombre;
-}
-
-void Empleado::setPuesto(const string &puesto) {
-    this->puesto = puesto;
-}
-
-void Empleado::setNumProyectos(int numProyectos) {
-    this->numProyectos = numProyectos;
-}
 
                                                       // metodos:
 void Empleado::asignarProyecto() {

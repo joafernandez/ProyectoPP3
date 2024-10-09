@@ -7,6 +7,8 @@
 #include "Proyecto.h"
 #include "Tarea.h"
 #include "Cliente.h"
+#include "ReunionSeguimiento.h"
+#include <sstream>
 #include <algorithm>"
 
 using namespace std;
@@ -27,13 +29,13 @@ int main() {
     };
 
     vector<Proyecto> proyectos = {
-            Proyecto("Portal de Ventas Online", "Desarrollo de un portal de ventas para productos electrónicos", "01/09/2024", "03/12/2024"),
-            Proyecto("App de Pedidos de Comida", "Desarrollo de una aplicación móvil para pedidos de comida a domicilio", "03/09/2024", "01/12/2024"),
+            Proyecto("Portal de Ventas Online", "Desarrollo de un portal de ventas para productos electronicos", "01/09/2024", "03/12/2024"),
+            Proyecto("App de Pedidos de Comida", "Desarrollo de una aplicacion movil para pedidos de comida a domicilio", "03/09/2024", "01/12/2024"),
             Proyecto("Sistema de Gestion de Inventarios", "Sistema para gestionar inventarios de una cadena de tiendas", "07/09/2024", "06/12/2024"),
-            Proyecto("Automatización de Facturación", "Proyecto para automatizar el proceso de facturación de la empresa", "08/09/2024", "02/12/2024"),
-            Proyecto("Sistema de Soporte Técnico", "Desarrollo de una plataforma para gestionar solicitudes de soporte técnico", "10/09/2024", "04/12/2024"),
-            Proyecto("Integración de API de Pagos", "Integración de una nueva API de pagos para la plataforma de ventas", "14/09/2024", "02/12/2024"),
-            Proyecto("Aplicación de Chat para Atención al Cliente", "Desarrollo de una aplicación de chat en tiempo real para atención al cliente", "18/09/2024", "06/12/2024"),
+            Proyecto("Automatizacion de Facturacion", "Proyecto para automatizar el proceso de facturacion de la empresa", "08/09/2024", "02/12/2024"),
+            Proyecto("Sistema de Soporte Tecnico", "Desarrollo de una plataforma para gestionar solicitudes de soporte tecnico", "10/09/2024", "04/12/2024"),
+            Proyecto("Integracion de API de Pagos", "Integracion de una nueva API de pagos para la plataforma de ventas", "14/09/2024", "02/12/2024"),
+            Proyecto("Aplicacion de Chat para Atencion al Cliente", "Desarrollo de una aplicacion de chat en tiempo real para atencion al cliente", "18/09/2024", "06/12/2024"),
     };
 
     vector<Cliente> clientes = {
@@ -52,6 +54,9 @@ int main() {
 
     };
 
+    vector<ReunionSeguimiento> reuniones;
+
+
     int opcion;
     do {
         cout << "======================================== GESTION DE OPCIONES ==========================================" << endl;
@@ -60,6 +65,7 @@ int main() {
         cout << "3. Gestion de Empleados" << endl;
         cout << "4. Gestion de Tareas" << endl;
         cout << "5. Gestion de Clientes" << endl;
+        cout << "6. Agendar Reunion de Seguimiento" << endl;
         cout << "0. Salir" << endl;
         cout << "Ingrese su opcion: ";
         cin >> opcion;
@@ -99,7 +105,9 @@ int main() {
             }
             cout << "=================================" << endl;
 
-        } else if (opcion == 2) {
+        }
+
+        else if (opcion == 2) {
             int opcionProyecto;
             do {
                 cout << "======================================== GESTION DE PROYECTOS =======================================" << endl;
@@ -107,7 +115,7 @@ int main() {
                 cout << "2. Agregar Proyecto" << endl;
                 cout << "3. Asignar Empleados a Proyecto" << endl;
                 cout << "4. Eliminar Proyecto" << endl;
-                cout << "5. Ordenar proyectos por fecha de finalización" << endl; // Nueva opción
+                cout << "5. Ordenar proyectos por fecha de finalizacion" << endl; // Nueva opción
                 cout << "0. Volver" << endl;
                 cout << "Ingrese su opcion: ";
                 cin >> opcionProyecto;
@@ -168,13 +176,15 @@ int main() {
             } while (opcionProyecto != 0); // Mantiene el bucle hasta que el usuario ingrese 0 para salir
         }
 
-            else if (opcion == 3) {
+        else if (opcion == 3) {
             int opcionEmpleado;
             do {
                 cout << "======================================== GESTION DE EMPLEADOS =======================================" << endl;
                 cout
-                        << "1. Mostrar todos los empleados \t 2. Agregar Empleado\t 3. Eliminar Empleado \t 0. Volver a Menu Principal"
-                        << endl;
+                        << "1. Mostrar todos los empleados "<<endl;
+                cout<<"2. Agregar Empleado" <<endl;
+                cout<<"3. Eliminar Empleado"<<endl;
+                cout<<"0. Volver a Menu Principal"<<endl;
                 cout << "Ingrese su opcion: ";
                 cin >> opcionEmpleado;
                 cin.ignore(); // Limpiar el buffer de entrada
@@ -221,20 +231,21 @@ int main() {
                     }
                 } else if (opcionEmpleado == 3) {
                     int index;
-                    cout << "Ingrese el índice del empleado a eliminar: ";
+                    cout << "Ingrese el indice del empleado a eliminar: ";
                     cin >> index;
                     if (index >= 0 && index < empleados.size()) {
                         empleados.erase(empleados.begin() + index);
                         cout << "Empleado eliminado." << endl;
                     } else {
-                        cout << "Índice inválido." << endl;
+                        cout << "Indice invalido." << endl;
                     }
                 } else if (opcionEmpleado != 0) {
-                    cout << "Opción no válida." << endl;
+                    cout << "Opcion no valida." << endl;
                 }
             } while (opcionEmpleado != 0); // Mantiene el bucle hasta que el usuario ingrese 0 para salir
         }
-            else if (opcion == 4) {
+
+        else if (opcion == 4) {
             int opcionTarea;
             do {
                 cout << "======================================== GESTION DE TAREAS ==========================================" << endl;
@@ -272,7 +283,7 @@ int main() {
                     getline(cin, nombre);
                     cout << "Ingrese estado (Pendiente/En progreso/Finalizada): ";
                     getline(cin, estado);
-                    cout << "Ingrese fecha límite: ";
+                    cout << "Ingrese fecha limite: ";
                     getline(cin, fechaLimite);
                     Tarea nuevaTarea(nombre, estado, fechaLimite, nullptr);
                     tareas.push_back(nuevaTarea);
@@ -295,17 +306,17 @@ int main() {
                             }
 
                             int indexEmpleado;
-                            cout << "Seleccione el índice del empleado a asignar: ";
+                            cout << "Seleccione el indice del empleado a asignar: ";
                             cin >> indexEmpleado;
 
                             if (indexEmpleado >= 0 && indexEmpleado < empleados.size()) {
                                 tareas[indexTarea].setEmpleadoAsignado(empleados[indexEmpleado]);
                                 cout << "Empleado asignado a la tarea." << endl;
                             } else {
-                                cout << "Índice de empleado inválido." << endl;
+                                cout << "Indice de empleado invalido." << endl;
                             }
                         } else {
-                            cout << "Índice de tarea inválido." << endl;
+                            cout << "Indice de tarea invalido." << endl;
                         }
                     }
                 } else if (opcionTarea == 4) {
@@ -314,13 +325,13 @@ int main() {
                         cout << "No hay tareas para eliminar." << endl;
                     } else {
                         int index;
-                        cout << "Ingrese el índice de la tarea a eliminar: ";
+                        cout << "Ingrese el indice de la tarea a eliminar: ";
                         cin >> index;
                         if (index >= 0 && index < tareas.size()) {
                             tareas.erase(tareas.begin() + index);
                             cout << "Tarea eliminada." << endl;
                         } else {
-                            cout << "Índice inválido." << endl;
+                            cout << "Indice invalido." << endl;
                         }
                     }
                 }//ACA PRUEBO OPCION 5
@@ -330,78 +341,209 @@ int main() {
                     cout << "No hay tareas para ordenar." << endl;
                 } else {
                     sort(tareas.begin(), tareas.end()); // Esto ahora usa la sobrecarga del operador <
-                    cout << "Tareas ordenadas por fecha límite:" << endl;
+                    cout << "Tareas ordenadas por fecha limite:" << endl;
                     for (const auto& tarea : tareas) {
                         cout << "Tarea: " << tarea.getNombre()
-                             << ", Fecha Límite: " << tarea.getFechaLimite()
+                             << ", Fecha Limite: " << tarea.getFechaLimite()
                              << ", Estado: " << tarea.getEstado() << endl;
                     }
                 }
             }
             else if (opcionTarea != 0) {
-                    cout << "Opción no válida." << endl;
+                    cout << "Opcion no valida." << endl;
                 }
             } while (opcionTarea != 0); // Mantiene el bucle hasta que el usuario ingrese 0 para salir
 
         } //esta funcionaba bien cuando imprimi
 
-
-
-
         else if (opcion == 5) {
+
             int opcionCliente;
             do {
-                cout << "                           === Gestion de Clientes ===" << endl;
-                cout << "1. Mostrar todos los clientes\t2. Agregar Cliente\t3. Eliminar Cliente\t0. Volver" << endl;
+                cout << "======================================== GESTION DE CLIENTES ==========================================" << endl;
+                cout << "1. Mostrar todos los clientes\t2. Agregar Cliente\t3. Eliminar Cliente\t4. Solicitar Reporte de Cliente\t0. Volver" << endl;
                 cout << "Ingrese su opcion: ";
                 cin >> opcionCliente;
                 cin.ignore(); // Limpiar el buffer de entrada
 
-                if (opcionCliente == 1) {
-                    if (clientes.empty()) {
-                        cout << "No hay clientes cargados." << endl;
-                    } else {
-                        for (int i = 0; i < clientes.size(); ++i) {
-                            cout << "Indice: " << i << " - Cliente: " << clientes[i].getNombre()
-                                 << ", Empresa: " << clientes[i].getEmpresa() << endl;
-                        }
-                    }
-                } else if (opcionCliente == 2) {
-                    // Agregar Cliente
-                    string nombre, empresa, contacto;
-                    cout << "Ingrese nombre del cliente: ";
-                    cin.ignore();
-                    getline(cin, nombre);
-                    cout << "Ingrese empresa: ";
-                    getline(cin, empresa);
-                    cout << "Ingrese contacto: ";
-                    getline(cin, contacto);
-                    Cliente nuevoCliente(nombre, empresa, contacto);
-                    clientes.push_back(nuevoCliente);
-                    cout << "Cliente agregado." << endl;
-                } else if (opcionCliente == 3) {
-                    // Eliminar Cliente
-                    if (clientes.empty()) {
-                        cout << "No hay clientes para eliminar." << endl;
-                    } else {
-                        int index;
-                        cout << "Ingrese el índice del cliente a eliminar: ";
-                        cin >> index;
-                        if (index >= 0 && index < clientes.size()) {
-                            clientes.erase(clientes.begin() + index);
-                            cout << "Cliente eliminado." << endl;
+                switch (opcionCliente) {
+                    case 1:
+                        void mostrarClientes(const vector<Cliente>& clientes); {
+                        if (clientes.empty()) {
+                            cout << "No hay clientes cargados." << endl;
                         } else {
-                            cout << "Índice inválido." << endl;
+                            for (int i = 0; i < clientes.size(); ++i) {
+                                cout << "Indice: " << i << " - Cliente: " << clientes[i].getNombre()
+                                     << ", Empresa: " << clientes[i].getEmpresa() << endl;
+                            }
                         }
                     }
-                } else if (opcionCliente != 0) {
-                    cout << "Opcion no válida." << endl;
+                        break;
+                    case 2:
+                        void agregarCliente(vector<Cliente>& clientes); {
+                        string nombre, empresa, contacto;
+                        cout << "Ingrese nombre del cliente: ";
+                        getline(cin, nombre);
+                        cout << "Ingrese empresa: ";
+                        getline(cin, empresa);
+                        cout << "Ingrese contacto: ";
+                        getline(cin, contacto);
+
+                        // Validar entrada
+                        if (nombre.empty() || empresa.empty()) {
+                            cout << "Nombre y empresa no pueden estar vacios." << endl;
+                        }
+
+                        Cliente nuevoCliente(nombre, empresa, contacto);
+                        clientes.push_back(nuevoCliente);
+                        cout << "Cliente agregado." << endl;
+                    }
+                        break;
+                    case 3:
+                            void eliminarCliente(vector<Cliente>& clientes); {
+                                if (clientes.empty()) {
+                                    cout << "No hay clientes para eliminar." << endl;
+                                } else {
+                                    int indice;
+                                    cout << "Ingrese el indice del cliente a eliminar: ";
+                                    cin >> indice;
+                                    if (indice >= 0 && indice < clientes.size()) {
+                                        cout << "¿Está seguro de eliminar al cliente? (s/n)?";
+                                        char respuesta;
+                                        cin >> respuesta;
+                                        if (respuesta == 's') {
+                                            clientes.erase(clientes.begin() + indice);
+                                            cout << "Cliente eliminado." << endl;
+                                        }
+                                    } else {
+                                        cout << "Indice invalido." << endl;
+                                    }
+                                }
+                            }
+                        break;
+                    case 4:
+                        void solicitarReporteCliente(vector<Cliente>& clientes); {
+                            if (clientes.empty()) {
+                                cout << "No hay clientes para solicitar reporte." << endl;
+                            } else {
+                                int indice;
+                                cout << "Ingrese el indice del cliente que solicitara reporte: ";
+                                cin >> indice;
+                                if (indice >= 0 && indice < clientes.size()) {
+                                    clientes[indice].solicitarReporte();
+                                } else {
+                                    cout << "Indice invalido." << endl;
+                                }
+                            }
+                        }
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        cout << "Opcion no valida." << endl;
                 }
-            } while (opcionCliente != 0); // Mantiene el bucle hasta que el usuario ingrese 0 para salir
-        }
-            else if(opcion != 0) {
-            cout << "Opción no válida." << endl;
-        }
+            } while (opcionCliente != 0);
+
+    }
+
+        else if (opcion == 6) {
+        do {
+            cout << "====================================== GESTION DE REUNIONES =========================================" << endl;
+            cout << "1. Mostrar reuniones agendadas\t2. Agregar reunion\t3. Eliminar reunion\t0. Volver" << endl;
+            cout << "Ingrese su opcion: ";
+            cin >> opcion;
+            cin.ignore(); // Limpiar el buffer de entrada
+
+            if (opcion == 1) {
+                // Mostrar reuniones agendadas
+                cout << "Reuniones agendadas:" << endl;
+                for (int i = 0; i < reuniones.size(); ++i) {
+                    cout << "INDICE: " << i << endl;
+                    cout << "Fecha: " << reuniones[i].getFecha() << endl;
+                    cout << "Hora: " << reuniones[i].getHora() << endl;
+                    cout << "Asistentes: ";
+                    for (const auto &asistente : reuniones[i].getListaAsistentes()) {
+                        cout << asistente << ", ";
+                    }
+                    cout << endl;cout << "Temas: ";
+                        for (size_t j = 0; j < reuniones[i].getTemasDiscutidos().size(); ++j) {
+                            cout << reuniones[i].getTemasDiscutidos()[j];
+                            if (j < reuniones[i].getTemasDiscutidos().size() - 1) {
+                                cout << ", "; // Solo agregar la coma si no es el último tema
+                            }
+                        }
+                        cout << endl;
+
+                    cout << "-----------------------------" << endl;
+                }
+
+            } else if (opcion == 2) {
+                // Agregar nueva reunion
+                string fecha, hora;
+                cout << "Ingrese fecha de la reunion: ";
+                getline(cin, fecha);
+                cout << "Ingrese hora de la reunion: ";
+                getline(cin, hora);
+
+                vector<string> asistentes;
+                string asistente;
+                cout << "Ingrese los asistentes (separados por coma): ";
+                getline(cin, asistente);
+                stringstream ss(asistente);
+                while (ss >> asistente) {
+                    asistentes.push_back(asistente);
+                }
+
+                vector<string> temas;
+                string tema;
+                cout << "Ingrese los temas (separados por coma): ";
+                getline(cin, tema);
+
+                // Dividir la cadena por comas
+                size_t pos = 0;
+                string item;
+                while ((pos = tema.find(',')) != string::npos) {
+                    item = tema.substr(0, pos);
+                    item.erase(0, item.find_first_not_of(" "));
+                    item.erase(item.find_last_not_of(" ") + 1);
+                    temas.push_back(item);
+                    tema.erase(0, pos + 1);
+                }
+
+                // Agregar el último tema (después de la última coma)
+                tema.erase(0, tema.find_first_not_of(" "));
+                tema.erase(tema.find_last_not_of(" ") + 1);
+                if (!tema.empty()) {
+                    temas.push_back(tema);
+                }
+
+                ReunionSeguimiento reunion(fecha, hora);
+                reunion.agendarReunion(asistentes, temas);
+                reuniones.push_back(reunion);
+                cout << "Reunion agendada." << endl;
+
+            } else if (opcion == 3) {
+                // Eliminar reunion
+                int indice;
+                cout << "Ingrese el indice de la reunion a eliminar: ";
+                cin >> indice;
+                cin.ignore();
+                if (indice >= 0 && indice < reuniones.size()) {
+                    reuniones.erase(reuniones.begin() + indice);
+                    cout << "Reunion eliminada." << endl;
+                } else {
+                    cout << "Indice de reunion invalido." << endl;
+                }
+
+            } else if (opcion != 0) {
+                cout << "Opcion no valida." << endl;
+            }
+        } while (opcion != 0);
+    }
+
+        else if(opcion != 0) {
+        cout << "Opcion no valida." << endl;
+    }
 
     } while (opcion != 0);
 
