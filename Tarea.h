@@ -10,7 +10,7 @@
 #include "Empleado.h"
 
 using namespace std;
-// representa las acttividades dentro del proyecto
+// representa las actividades dentro del proyecto
 class Tarea {
 private:
     string nombre;// de la tarea
