@@ -108,6 +108,8 @@ int main() {
 
         }
 
+
+
         else if (opcion == 2) {
             int opcionProyecto;
             do {
