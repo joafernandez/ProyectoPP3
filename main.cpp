@@ -14,6 +14,7 @@
 using namespace std;
 
 int main() {
+
     // Precargar datos de ejemplo
     vector<Empleado*> empleados = {
             new Desarrollador("Juan", "Desarrollador", "C++"),
@@ -39,12 +40,12 @@ int main() {
     };
 
     vector<Cliente> clientes = {
-            Cliente("Farmacity", "Farmacity", "contacto@farmacity.com"),
-            Cliente("AnibalTuc", "AnibalTuc", "info@anibaltuc.com"),
-            Cliente("FerTec", "FerTec", "contacto@fertec.com"),
+            Cliente("Farmacity", "Farmacity", "contacto@gmail.com"),
+            Cliente("AnibalTuc", "AnibalTuc", "info@gmail.com"),
+            Cliente("FerTec", "FerTec", "fercto@gmail.com"),
             Cliente("TurboTejada", "TurboTejada", "contacto@turbotejada.com"),
             Cliente("DAS", "DAS", "info@das.com"),
-            Cliente("Digital Solutions", "Digital Solutions", "contacto@digitalsolutions.com"),
+            Cliente("Digital Solutions", "Digital Solutions", "digitalsolutions@gamil.com"),
             Cliente("TecnoFe", "TecnoFe", "soporte@tecnofe.com"),
     };
 
